@@ -29,11 +29,11 @@ body::before {
     position: fixed;
     top:0; left:0;
     width:100%; height:100%;
-    background-image: url("https://scontent.fmnl17-3.fna.fbcdn.net/v/t39.30808-6/557336291_122257277960221835_1801806274016694332_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeHFwD90xiupXj0EJcgc45-YDYaLDnwFvPgNhosOfAW8-NEHFrghsUPAlXYjmNQRTSiZaruIzrEayOTvek6vKy_X&_nc_ohc=sQNeX-b2Of4Q7kNvwEGoM9P&_nc_oc=AdkRflL1nxyfrvH9V1a3njxxgFj5PA0NjZKcb7cnz4xJuoMwkqh9KjLHoJ7WZTDI_Os&_nc_zt=23&_nc_ht=scontent.fmnl17-3.fna&_nc_gid=E5dslVDwX9Idc72MjCsqRQ&oh=00_AfkHGar9V9ty79WD44u428QU_v2sqBC2CUZX8yjUD4-PBQ&oe=694FF4D5");
+    background-image: url("https://shorturl.at/nJhQZ");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    filter: blur(3px);
+    filter: blur(10px);
     z-index: -1;
 }
 
@@ -50,15 +50,16 @@ body::after {
 /* Navigation Bar */
 nav {
     position: fixed;
-    top:0; left:0;
+    top: 0;
+    left: 0;
     width: 100%;
     background: rgba(255,255,255,0.2);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     display: flex;
-    justify-content: center;
+    justify-content: flex-start; /* ← aligns items to the left */
     gap: 30px;
-    padding: 15px 0;
+    padding: 15px 40px; /* ← adds left spacing */
     z-index: 10;
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
@@ -315,19 +316,112 @@ footer a {
 footer a:hover {
     color: #8B5A3C;
 }
+
+
+
+/* NAVBAR CONTAINER */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 10;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+/* LOGO */
+.logo {
+    font-weight: bold;
+    color: #5A4B3C;
+    font-size: 1.2rem;
+}
+
+/* LINKS */
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: #5A4B3C;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* HAMBURGER */
+.menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #5A4B3C;
+}
+
+/* MOBILE STYLES */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(255,255,255,0.95);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        display: none;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+}
+
+
+
+
+
 </style>
 </head>
 <body>
 
 <!-- Navigation -->
 <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#vision-mission">Vision & Mission</a>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
+    <div class="nav-container">
+        <div class="logo">Kinaiya </div>
+
+        <div class="menu-toggle" id="menu-toggle">
+            ☰
+        </div>
+
+        <div class="nav-links" id="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#vision-mission">Vision & Mission</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
 </nav>
+
 
 <header id="home">
 <img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t39.30808-6/557629194_122257276664221835_5560286584406453369_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHsEqM3uVePGa57A9HzbJW8gMEqQwcmlGKAwSpDByaUYjysqZboOMpKFPhPSKvuQyc2biDP54dV9djmK2PVJ5bc&_nc_ohc=b5u0NAM2dScQ7kNvwHRvH02&_nc_oc=AdkQhNc680rp695LWkq165VvaA457KjQTg3DYYBcwik3YzH8qlhCW-tqJO_uXZopx7w&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=rX5Xmp5fQVFqi-Mr3MqSSQ&oh=00_AfkzZ4OMDoFq1CCenBg6aTfoYrSIdjHJO33ZZKwqofL1MA&oe=694FE9E6" 
@@ -413,22 +507,47 @@ footer a:hover {
 </section>
 
 <!-- Contact Section -->
-<section id="contact" class="contact">
-<h2>Contact Us</h2>
-<form onsubmit="event.preventDefault(); alert('Message sent!');">
-    <input type="text" placeholder="Your Name" required>
-    <input type="email" placeholder="Your Email" required>
-    <textarea placeholder="Your Message" rows="5" required></textarea>
-    <button type="submit">Send Message</button>
-</form>
+<section id="contact" class="vision-mission">
+  <h2>Contact Us</h2>
+  <div class="vm-content">
+    <div class="vm-box">
+      <h3>Email</h3>
+      <p><a href="mailto:kinaiya.journalism@example.com">kinaiya.journalism@gmail.com</a></p>
+    </div>
+    <div class="vm-box">
+      <h3>Social Media</h3>
+      <p>
+        <a href="https://www.facebook.com/profile.php?id=61556655072973" target="_blank">Facebook</a><br>
+        <a href="https://instagram.com/kinaiya.journalism" target="_blank"></a><br> 
+        <a href="https://twitter.com/kinaiya_journalism" target="_blank"></a>
+      </p> 
+    </div>
+  </div>
 </section>
 
 <!-- Footer -->
 <footer>
-    © 2025 • Kinaiya Journalism Club
+    © 2025 • 𝙴𝚌𝚑𝚘𝚎𝚜 𝚘𝚏 "𝑲𝑰𝑵𝑨𝑰𝒀𝑨"- 𝙰𝙼𝙰𝙲𝙲 𝙼𝙰𝙺𝙰𝚃𝙸 
+
     <br>
     <a href="#privacy">Privacy</a> | <a href="#terms">Terms</a>
 </footer>
+
+
+
+
+<script>
+const toggle = document.getElementById("menu-toggle");
+const links = document.getElementById("nav-links");
+
+toggle.addEventListener("click", () => {
+    links.classList.toggle("show");
+});
+</script>
+
+
+
+
 
 </body>
 </html>
