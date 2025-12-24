@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kinaiya Journalism Club Photo Gallery</title>
+
+<!-- SOCIAL SHARE PREVIEW -->
+<meta property="og:title" content="Kinaiya Journalism Club Photo Gallery">
+<meta property="og:description" content="Explore and download high-quality photos from Kinaiya Journalism Club events.">
+<meta property="og:image" content="https://scontent.fmnl17-3.fna.fbcdn.net/v/t39.30808-6/557336291_122257277960221835_1801806274016694332_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeHFwD90xiupXj0EJcgc45-YDYaLDnwFvPgNhosOfAW8-NEHFrghsUPAlXYjmNQRTSiZaruIzrEayOTvek6vKy_X&_nc_ohc=sQNeX-b2Of4Q7kNvwEGoM9P&_nc_oc=AdkRflL1nxyfrvH9V1a3njxxgFj5PA0NjZKcb7cnz4xJuoMwkqh9KjLHoJ7WZTDI_Os&_nc_zt=23&_nc_ht=scontent.fmnl17-3.fna&_nc_gid=E5dslVDwX9Idc72MjCsqRQ&oh=00_AfkHGar9V9ty79WD44u428QU_v2sqBC2CUZX8yjUD4-PBQ&oe=694FF4D5">
+<meta property="og:type" content="website">
+<meta property="og:url" content="YOUR_WEBSITE_URL_HERE">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* Reset & body */
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { height: 100%; font-family: 'Segoe UI', sans-serif; scroll-behavior: smooth; }
+
+/* Full-page blurred background */
+body {
+    position: relative;
+    padding: 40px 20px;
+    color: #2C2C2C;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background-image: url("https://shorturl.at/nJhQZ");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(10px);
+    z-index: -1;
+}
+
+/* Overlay for softer look */
+body::after {
+    content: '';
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background: rgba(255,255,255,0.2);
+    z-index: -1;
+}
+
+/* Navigation Bar */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: flex-start; /* ← aligns items to the left */
+    gap: 30px;
+    padding: 15px 40px; /* ← adds left spacing */
+    z-index: 10;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+nav a {
+    color: #5A4B3C;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #8B5A3C;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 1;
+    padding-top: 70px; /* space for nav */
+}
+
+header img {
+    width: 120px;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+header h1 {
+    font-size: 3rem;
+    line-height:1.2;
+    color: #8B5A3C;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+}
+
+header p {
+    font-size: 1.1rem;
+    margin-top: 10px;
+    color: #4A3F35;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+/* Sections */
+section {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 40px 20px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 6px 30px rgba(0,0,0,0.25);
+    color: #4A3F35;
+    position: relative;
+    z-index: 1;
+}
+
+/* About Section */
+.about h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #8B5A3C;
+}
+
+.about p {
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/* Services Section */
+.services {
+    text-align: center;
+}
+
+.services h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #8B5A3C;
+}
+
+.service-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+}
+
+.service-box {
+    flex: 1 1 300px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.service-box h3 {
+    margin-bottom: 15px;
+    color: #5A4B3C;
+}
+
+.service-box p {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* Gallery Grid */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.album {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 6px 30px rgba(0,0,0,0.25);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.album:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 45px rgba(0,0,0,0.35);
+}
+
+.album img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    filter: sepia(0.2) contrast(0.9);
+}
+
+.album-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.album-content h2 {
+    margin-bottom: 10px;
+    color: #5A4B3C;
+    font-weight: bold;
+}
+
+.album-content p {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    color: #4A3F35;
+}
+
+.album-content a {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 12px 28px;
+    background: linear-gradient(135deg, #BFA176, #8B5A3C);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.album-content a:hover {
+    background: linear-gradient(135deg, #8B5A3C, #BFA176);
+    transform: scale(1.05);
+}
+
+/* Vision & Mission Section */
+.vm-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+}
+
+.vm-box {
+    flex: 1 1 400px;
+    padding: 20px;
+    text-align: center;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.vm-box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #5A4B3C;
+}
+
+.vm-box p {
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/* Contact Form */
+.contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact input, .contact textarea {
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+
+.contact button {
+    padding: 12px 24px;
+    border-radius: 50px;
+    border: none;
+    background: linear-gradient(135deg, #BFA176, #8B5A3C);
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.contact button:hover {
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 60px;
+    font-size: 0.85rem;
+    opacity: 0.7;
+    color: #5A4B3C;
+    position: relative;
+    z-index: 1;
+}
+
+footer a {
+    color: #5A4B3C;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    color: #8B5A3C;
+}
+
+
+
+/* NAVBAR CONTAINER */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 10;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+/* LOGO */
+.logo {
+    font-weight: bold;
+    color: #5A4B3C;
+    font-size: 1.2rem;
+}
+
+/* LINKS */
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: #5A4B3C;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* HAMBURGER */
+.menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #5A4B3C;
+}
+
+/* MOBILE STYLES */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(255,255,255,0.95);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        display: none;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+}
+
+
+
+
+
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="nav-container">
+        <div class="logo">𝑲𝑰𝑵𝑨𝑰𝒀𝑨 </div>
+
+        <div class="menu-toggle" id="menu-toggle">
+            ☰
+        </div>
+
+        <div class="nav-links" id="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#vision-mission">Vision & Mission</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+
+<header id="home">
+<img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t39.30808-6/557629194_122257276664221835_5560286584406453369_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHsEqM3uVePGa57A9HzbJW8gMEqQwcmlGKAwSpDByaUYjysqZboOMpKFPhPSKvuQyc2biDP54dV9djmK2PVJ5bc&_nc_ohc=b5u0NAM2dScQ7kNvwHRvH02&_nc_oc=AdkQhNc680rp695LWkq165VvaA457KjQTg3DYYBcwik3YzH8qlhCW-tqJO_uXZopx7w&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=rX5Xmp5fQVFqi-Mr3MqSSQ&oh=00_AfkzZ4OMDoFq1CCenBg6aTfoYrSIdjHJO33ZZKwqofL1MA&oe=694FE9E6" 
+         alt="Kinaiya Journalism Club Logo">    
+<h1>Kinaiya Journalism Club Photo Gallery</h1>
+<p>Explore, view, and download high-quality photos from our events</p>
+</header>
+
+<!-- About Section -->
+<section id="about" class="about">
+<h2>About Us</h2>
+<p><b>KINAIYA</b> is not just a name whispered in the halls of AMA Computer College–Makati. It is a pulse, a rhythm, a quiet fire that lives in the hearts of its Journalism Club members.<br><br>
+
+It is curiosity—the kind that leans in to listen when the world speaks softly. It is bravery—the courage to ask questions that matter, even when the answers are heavy. It is thoughtfulness—the care to notice the unseen, to honor the overlooked, to give voice to moments that might otherwise fade into silence.<br><br>
+
+More than rules or skills, <b>KINAIYA</b> is a way of being. It is care stitched into sentences, integrity carried in questions, honesty woven through every story. Each article is not just ink on paper, but a reflection of empathy, a bridge between truth and feeling.<br><br>
+
+KINAIYA reminds us that journalism is not only about reporting—it is about understanding. It is about standing in another’s shoes, hearing the tremble in a voice, and translating that into words that connect. It is about weaving facts with compassion, so that stories do not just inform, but also move hearts.<br><br>
+
+In every whisper heard, in every truth told, <b>KINAIYA</b> is there—gentle yet unyielding, reminding us that storytelling is both a responsibility and a gift.<br><br>
+
+At AMA Makati, <b>KINAIYA</b> is more than the spirit of a club. It is the soul of a community, a promise that every story matters, and every voice deserves to be heard.</p>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="services">
+<h2>Our Services</h2>
+<div class="service-boxes">
+    <div class="service-box">
+        <h3>Photo Documentation</h3>
+        <p>High-quality photo coverage of events, projects, and activities.</p>
+    </div>
+    <div class="service-box">
+        <h3>Storytelling & Reporting</h3>
+        <p>Engaging articles, features, and news reports written by our student journalists.</p>
+    </div>
+    <div class="service-box">
+        <h3>Workshops</h3>
+        <p>Journalism workshops and training sessions for students interested in media and reporting.</p>
+    </div>
+</div>
+</section>
+
+<!-- Gallery Section -->
+<section id="gallery" class="gallery">
+<!-- Album 1 -->
+<div class="album">
+    <img src="https://scontent.fmnl17-2.fna.fbcdn.net/v/t39.30808-6/574905695_122262592460221835_9177504594140428228_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeF_ssc2gn3HRVHlukKTYSSGe5jGBP3c3GF7mMYE_dzcYfweDB4Y7UeF6gFospSHFwSsc_igjSvS9XQDTEIjFMP9&_nc_ohc=IIJkTHSawKAQ7kNvwGLOJbG&_nc_oc=AdkfHQpz9sgBX6TcevS8llNvqiqgcAOEGWdYOJVbAk7Cd0uTg1KHRKewTMVAAZ4gpJQ&_nc_zt=23&_nc_ht=scontent.fmnl17-2.fna&_nc_gid=G1duKVq0lS6uF6N8HYsO8A&oh=00_AfndqO2y9fONIXWurhV9bCcb7wCpPNgbGaYZ7O3SQz2naA&oe=694FF096" alt="Club Event 1">
+    <div class="album-content">
+        <h2>Club Event 1</h2>
+        <p>All photos available in original quality.</p>
+        <a href="https://drive.google.com/drive/folders/15DDHCNDGjrX3broEDu-nCr6hYFdUSEKs?usp=sharing" target="_blank">Open Album</a>
+    </div>
+</div>
+<!-- Album 2 -->
+<div class="album">
+    <img src="https://scontent.fmnl17-7.fna.fbcdn.net/v/t39.30808-6/471654135_122197189964221835_6324219775224063223_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=86c6b0&_nc_eui2=AeHUdx6uV6bn69WP7wFLAuI1hEmyb7y1HCmESbJvvLUcKej3Bb_gV8mga0ESf8o16ELFhIOiS85ZarFeY470V_M5&_nc_ohc=GEfinLmo15UQ7kNvwGek0Sa&_nc_oc=AdkeTCLEhKJr5VUi8Oyzwxzc6anGeHflcoatoThW5fOa3d8LjE4Kp0UALeZNJ_Hs7wI&_nc_zt=23&_nc_ht=scontent.fmnl17-7.fna&_nc_gid=yiZZYqVzT053lrr8-cukcw&oh=00_AfnSMFMhFzaU6UYUYyPRYPtlWYK74ybF-UEsxtKeW1-NGQ&oe=69500158" alt="Club Event 2">
+    <div class="album-content">
+        <h2>Club Event 2</h2>
+        <p>Photos from our latest journalism projects.</p>
+        <a href="https://drive.google.com/drive/folders/YOUR_SECOND_FOLDER_ID" target="_blank">Open Album</a>
+    </div>
+</div>
+<!-- Album 3 -->
+<div class="album">
+    <img src="https://scontent.fmnl17-3.fna.fbcdn.net/v/t39.30808-6/574577725_122262919850221835_2038269758464384184_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGgNbRxkBIvOo7B2KCpS4qbw8jmgkNXD_nDyOaCQ1cP-TLNW7HSalK7Vg3aGqxnS2YPMYHIlG2dM64rEEvvkJuK&_nc_ohc=HKWyLvx2C_MQ7kNvwEc8vwh&_nc_oc=AdmFP_7lNnNDvFTVJZBe9lr9Ds8YaEQeRuefwe1nb2Mtl99HHFFJ0fZdB3cWZQJXA_U&_nc_zt=23&_nc_ht=scontent.fmnl17-3.fna&_nc_gid=wYDJDmDZWy9_R3FyV1_gdQ&oh=00_AfmJb7cCugmGIlsGaQLc4bPAumQIP3qbwRZfd1eYmBPWYQ&oe=694FFE18" alt="Club Event 3">
+    <div class="album-content">
+        <h2>Club Event 3</h2>
+        <p>High-quality photos for download.</p>
+        <a href="https://drive.google.com/drive/folders/YOUR_THIRD_FOLDER_ID" target="_blank">Open Album</a>
+    </div>
+</div>
+</section>
+
+<!-- Vision & Mission -->
+<section id="vision-mission" class="vision-mission">
+<h2>Our Vision & Mission</h2>
+<div class="vm-content">
+    <div class="vm-box">
+        <h3>Vision</h3>
+        <p>We strive to be the beacon of student expression where every story is heard,
+             every truth valued, and every voice sparks awareness, action, and change.
+             We envision a community where no voice is lost, and student journalists grow both in craft and character,
+             shaping narratives that enlighten minds, move hearts, and nurture positive transformation.</p>
+    </div>
+    <div class="vm-box">
+        <h3>Mission</h3>
+        <p>Kinaiya champions fearless journalism that speaks truth, sparks thought, and connects hearts.
+             We exist to amplify student voices and transform words into impact. Through creative and honest storytelling,
+             we aim to inform, inspire, and awaken understanding within our community.</p>
+    </div>
+</div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="vision-mission">
+  <h2>Contact Us</h2>
+  <div class="vm-content">
+    <div class="vm-box">
+      <h3>Email</h3>
+      <p><a href="ferg42143@gmail.com">kinaiya.journalism@gmail.com</a></p>
+    </div>
+    <div class="vm-box">
+      <h3>Social Media</h3>
+      <p>
+        <a href="https://www.facebook.com/profile.php?id=61556655072973" target="_blank">𝙴𝚌𝚑𝚘𝚎𝚜 𝚘𝚏 "𝑲𝑰𝑵𝑨𝑰𝒀𝑨"- 𝙰𝙼𝙰𝙲𝙲 𝙼𝙰𝙺𝙰𝚃𝙸 </a><br>
+        <a href="https://instagram.com/kinaiya.journalism" target="_blank"></a><br> 
+        <a href="https://twitter.com/kinaiya_journalism" target="_blank"></a>
+      </p> 
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    © 2025 • 𝙴𝚌𝚑𝚘𝚎𝚜 𝚘𝚏 "𝑲𝑰𝑵𝑨𝑰𝒀𝑨"- 𝙰𝙼𝙰𝙲𝙲 𝙼𝙰𝙺𝙰𝚃𝙸 
+
+    <br>
+    <a href="#privacy">Privacy</a> | <a href="#terms">Terms</a>
+</footer>
+
+
+
+
+<script>
+const toggle = document.getElementById("menu-toggle");
+const links = document.getElementById("nav-links");
+
+toggle.addEventListener("click", () => {
+    links.classList.toggle("show");
+});
+</script>
+
+
+
+
+
+</body>
+</html>
