@@ -444,8 +444,8 @@ section h2::after {
 /* ========== GALLERY GRID WITH ADVANCED EFFECTS ========== */
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
     padding: 0;
 }
 
@@ -487,7 +487,7 @@ section h2::after {
 .album-img-container {
     position: relative;
     overflow: hidden;
-    height: 260px;
+    height: 190px;
 }
 
 .album-img {
@@ -521,17 +521,17 @@ section h2::after {
 }
 
 .album-content {
-    padding: 35px 30px;
+    padding: 24px 22px;
     text-align: center;
     position: relative;
     z-index: 2;
 }
 
 .album-content h2 {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     color: #5A4B3C;
     font-weight: 700;
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     font-family: 'Playfair Display', serif;
 }
 
@@ -540,22 +540,22 @@ section h2::after {
 }
 
 .album-content p {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     color: #4A3F35;
-    margin-bottom: 25px;
-    line-height: 1.6;
+    margin-bottom: 18px;
+    line-height: 1.55;
     font-weight: 300;
 }
 
 .album-btn {
     display: inline-block;
-    padding: 16px 40px;
+    padding: 12px 30px;
     background: linear-gradient(135deg, #BFA176, #8B5A3C);
     color: #fff;
     text-decoration: none;
     border-radius: 50px;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.9rem;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 6px 20px rgba(139, 90, 60, 0.3);
     position: relative;
@@ -635,6 +635,7 @@ section h2::after {
     border: 1px solid rgba(255, 255, 255, 0.6);
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
 }
 
 .member-card:hover {
@@ -720,6 +721,112 @@ section h2::after {
     background: #8B5A3C;
     width: 26px;
     border-radius: 6px;
+}
+
+/* ========== MEMBER INFO MODAL ========== */
+.member-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(60, 40, 25, 0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+    z-index: 1000;
+}
+
+.member-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.member-modal {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.97), rgba(255, 250, 245, 0.95));
+    border-radius: 26px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 30px 70px rgba(60, 40, 25, 0.4);
+    max-width: 420px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    transform: scale(0.85) translateY(20px);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.member-modal-overlay.active .member-modal {
+    transform: scale(1) translateY(0);
+}
+
+.member-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.9);
+    color: #8B5A3C;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.member-modal-close:hover {
+    background: #8B5A3C;
+    color: #fff;
+    transform: rotate(90deg);
+}
+
+.member-modal-img {
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    display: block;
+    border-radius: 26px 26px 0 0;
+}
+
+.member-modal-info {
+    padding: 26px 30px 32px;
+    text-align: center;
+}
+
+.member-modal-info h3 {
+    font-family: 'Playfair Display', serif;
+    color: #8B5A3C;
+    font-size: 1.6rem;
+    margin-bottom: 6px;
+}
+
+.member-modal-role {
+    color: #B07D4F;
+    font-weight: 500;
+    margin-bottom: 16px;
+    font-size: 1rem;
+}
+
+.member-modal-bio {
+    color: #5A4B3C;
+    font-weight: 300;
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 600px) {
+    .member-modal-img { height: 240px; }
+    .member-modal-info { padding: 20px 22px 26px; }
 }
 
 @media (max-width: 600px) {
@@ -1176,7 +1283,29 @@ footer a:hover {
 
     .gallery {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 22px;
+    }
+
+    .album-img-container {
+        height: 200px;
+    }
+
+    .album-content {
+        padding: 20px 18px;
+    }
+
+    .album-content h2 {
+        font-size: 1.25rem;
+    }
+
+    .album-content p {
+        font-size: 0.9rem;
+        margin-bottom: 16px;
+    }
+
+    .album-btn {
+        padding: 11px 26px;
+        font-size: 0.85rem;
     }
 
     header {
@@ -1209,7 +1338,19 @@ footer a:hover {
     }
 
     .album-content {
-        padding: 25px 20px;
+        padding: 18px 16px;
+    }
+
+    .album-img-container {
+        height: 170px;
+    }
+
+    .album-content h2 {
+        font-size: 1.15rem;
+    }
+
+    .album-content p {
+        font-size: 0.85rem;
     }
 }
 
@@ -1423,7 +1564,9 @@ button:focus {
             <!-- Add or remove .member-card blocks as needed. -->
             <!-- This is a draggable/swipeable slider - drag, swipe, or use the arrows/dots. -->
             <!-- ================================================================ -->
-            <div class="member-card">
+            <div class="member-card" tabindex="0" role="button" aria-haspopup="dialog"
+                 data-name="Member Name" data-role="Editor-in-Chief" data-img="assets/images/member1.jpg"
+                 data-bio="Add a short bio for this member here.">
                 <img src="assets/images/member1.png" alt="Member 1">
                 <div class="member-info">
                     <h3>Member Name</h3>
@@ -1431,7 +1574,9 @@ button:focus {
                 </div>
             </div>
 
-            <div class="member-card">
+            <div class="member-card" tabindex="0" role="button" aria-haspopup="dialog"
+                 data-name="Member Name" data-role="Photojournalist" data-img="assets/images/member2.jpg"
+                 data-bio="Add a short bio for this member here.">
                 <img src="assets/images/member2.png" alt="Member 2">
                 <div class="member-info">
                     <h3>Member Name</h3>
@@ -1439,7 +1584,9 @@ button:focus {
                 </div>
             </div>
 
-            <div class="member-card">
+            <div class="member-card" tabindex="0" role="button" aria-haspopup="dialog"
+                 data-name="Member Name" data-role="Staff Writer" data-img="assets/images/member3.jpg"
+                 data-bio="Add a short bio for this member here.">
                 <img src="assets/images/member3.png" alt="Member 3">
                 <div class="member-info">
                     <h3>Member Name</h3>
@@ -1447,7 +1594,9 @@ button:focus {
                 </div>
             </div>
 
-            <div class="member-card">
+            <div class="member-card" tabindex="0" role="button" aria-haspopup="dialog"
+                 data-name="Member Name" data-role="Layout Artist" data-img="assets/images/member4.jpg"
+                 data-bio="Add a short bio for this member here.">
                 <img src="assets/images/member4.png" alt="Member 4">
                 <div class="member-info">
                     <h3>Member Name</h3>
@@ -1455,7 +1604,9 @@ button:focus {
                 </div>
             </div>
 
-            <div class="member-card">
+            <div class="member-card" tabindex="0" role="button" aria-haspopup="dialog"
+                 data-name="Member Name" data-role="Social Media Officer" data-img="assets/images/member5.jpg"
+                 data-bio="Add a short bio for this member here.">
                 <img src="assets/images/member5.png" alt="Member 5">
                 <div class="member-info">
                     <h3>Member Name</h3>
@@ -1463,7 +1614,9 @@ button:focus {
                 </div>
             </div>
 
-            <div class="member-card">
+            <div class="member-card" tabindex="0" role="button" aria-haspopup="dialog"
+                 data-name="Member Name" data-role="Videographer" data-img="assets/images/member6.jpg"
+                 data-bio="Add a short bio for this member here.">
                 <img src="assets/images/member6.png" alt="Member 6">
                 <div class="member-info">
                     <h3>Member Name</h3>
@@ -1476,6 +1629,19 @@ button:focus {
         <div class="carousel-dots"></div>
     </div>
 </section>
+
+<!-- Member Info Modal -->
+<div class="member-modal-overlay" id="memberModalOverlay">
+    <div class="member-modal" role="dialog" aria-modal="true" aria-labelledby="memberModalName">
+        <button class="member-modal-close" id="memberModalClose" aria-label="Close">&times;</button>
+        <img class="member-modal-img" id="memberModalImg" src="" alt="">
+        <div class="member-modal-info">
+            <h3 id="memberModalName"></h3>
+            <p class="member-modal-role" id="memberModalRole"></p>
+            <p class="member-modal-bio" id="memberModalBio"></p>
+        </div>
+    </div>
+</div>
 
 <!-- Vision & Mission -->
 <section id="vision-mission" class="vision-mission">
@@ -1888,6 +2054,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         isDragging = false;
         track.classList.remove("dragging");
         const dx = (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - startX;
+        track.dataset.lastDragDistance = Math.abs(dx);
         const threshold = cardWidth / 4;
         if (dx < -threshold) {
             goToSlide(currentIndex + 1);
@@ -1908,6 +2075,56 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
     window.addEventListener("resize", measure);
     measure();
+})();
+
+// ========== MEMBER INFO MODAL ==========
+(function () {
+    const overlay = document.getElementById("memberModalOverlay");
+    const closeBtn = document.getElementById("memberModalClose");
+    const modalImg = document.getElementById("memberModalImg");
+    const modalName = document.getElementById("memberModalName");
+    const modalRole = document.getElementById("memberModalRole");
+    const modalBio = document.getElementById("memberModalBio");
+
+    if (!overlay) return;
+
+    function openModal(card) {
+        modalImg.src = card.dataset.img || card.querySelector("img").src;
+        modalImg.alt = card.dataset.name || "";
+        modalName.textContent = card.dataset.name || "";
+        modalRole.textContent = card.dataset.role || "";
+        modalBio.textContent = card.dataset.bio || "";
+        overlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+        overlay.classList.remove("active");
+        document.body.style.overflow = "";
+    }
+
+    document.querySelectorAll(".member-card").forEach(card => {
+        card.addEventListener("click", () => {
+            const track = document.querySelector(".carousel-track");
+            const dragDistance = track ? parseFloat(track.dataset.lastDragDistance || "0") : 0;
+            if (dragDistance > 8) return; // ignore click that was actually a swipe
+            openModal(card);
+        });
+        card.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                openModal(card);
+            }
+        });
+    });
+
+    closeBtn.addEventListener("click", closeModal);
+    overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) closeModal();
+    });
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeModal();
+    });
 })();
 const observerOptions = {
     threshold: 0.1,
