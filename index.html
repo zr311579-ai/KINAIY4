@@ -590,6 +590,88 @@ section h2::after {
     transform: translateY(-1px) scale(1.02);
 }
 
+/* ========== MEMBERS CAROUSEL ========== */
+.members-section {
+    text-align: center;
+}
+
+.members-subtitle {
+    color: #5A4B3C;
+    font-weight: 300;
+    margin-top: -10px;
+    margin-bottom: 40px;
+    font-size: 1.05rem;
+}
+
+.carousel-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+}
+
+.carousel-track {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+    animation: carouselScroll 30s linear infinite;
+}
+
+.carousel-wrapper:hover .carousel-track {
+    animation-play-state: paused;
+}
+
+@keyframes carouselScroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+.member-card {
+    flex: 0 0 auto;
+    width: 220px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(139, 90, 60, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.member-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 18px 40px rgba(139, 90, 60, 0.3);
+}
+
+.member-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+.member-info {
+    padding: 16px;
+}
+
+.member-info h3 {
+    font-family: 'Playfair Display', serif;
+    color: #8B5A3C;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.member-info p {
+    color: #5A4B3C;
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+@media (max-width: 600px) {
+    .member-card { width: 160px; }
+    .member-card img { height: 160px; }
+}
+
 /* ========== VISION & MISSION ========== */
 .vm-content {
     display: grid;
@@ -1130,6 +1212,7 @@ button:focus {
             <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#gallery">Gallery</a>
+            <a href="#members">Members</a>
             <a href="#vision-mission">Vision & Mission</a>
             <a href="#services">Services</a>
             <a href="#anonymous-message">Message</a>
@@ -1266,6 +1349,70 @@ button:focus {
             </div>
         </article>
 
+    </div>
+</section>
+
+<!-- Members Section -->
+<section id="members" class="members-section">
+    <h2>Our Members</h2>
+    <p class="members-subtitle">Meet the storytellers behind KINAIYA</p>
+
+    <div class="carousel-wrapper">
+        <div class="carousel-track">
+            <!-- ================================================================ -->
+            <!-- 👤 MEMBER PHOTOS - CHANGE IMAGE URL & NAME/ROLE HERE -->
+            <!-- Add or remove .member-card blocks as needed. -->
+            <!-- The track is duplicated automatically by JS for a seamless loop. -->
+            <!-- ================================================================ -->
+            <div class="member-card">
+                <img src="assets/images/member1.png" alt="Member 1">
+                <div class="member-info">
+                    <h3>Member Name</h3>
+                    <p>Editor-in-Chief</p>
+                </div>
+            </div>
+
+            <div class="member-card">
+                <img src="assets/images/member2.jpg" alt="Member 2">
+                <div class="member-info">
+                    <h3>Member Name</h3>
+                    <p>Photojournalist</p>
+                </div>
+            </div>
+
+            <div class="member-card">
+                <img src="assets/images/member3.jpg" alt="Member 3">
+                <div class="member-info">
+                    <h3>Member Name</h3>
+                    <p>Staff Writer</p>
+                </div>
+            </div>
+
+            <div class="member-card">
+                <img src="assets/images/member4.jpg" alt="Member 4">
+                <div class="member-info">
+                    <h3>Member Name</h3>
+                    <p>Layout Artist</p>
+                </div>
+            </div>
+
+            <div class="member-card">
+                <img src="assets/images/member5.jpg" alt="Member 5">
+                <div class="member-info">
+                    <h3>Member Name</h3>
+                    <p>Social Media Officer</p>
+                </div>
+            </div>
+
+            <div class="member-card">
+                <img src="assets/images/member6.jpg" alt="Member 6">
+                <div class="member-info">
+                    <h3>Member Name</h3>
+                    <p>Videographer</p>
+                </div>
+            </div>
+            <!-- ================================================================ -->
+        </div>
     </div>
 </section>
 
@@ -1579,7 +1726,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ========== INTERSECTION OBSERVER FOR ANIMATIONS ==========
+// ========== MEMBERS CAROUSEL SEAMLESS LOOP ==========
+const carouselTrack = document.querySelector(".carousel-track");
+if (carouselTrack) {
+    // Duplicate the cards once so the 50% translateX loop is seamless
+    carouselTrack.innerHTML += carouselTrack.innerHTML;
+}
 const observerOptions = {
     threshold: 0.1,
     rootMargin: "0px 0px -100px 0px"
